@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2ef1uhb4s70o"]
+
+[ext_resource type="Script" uid="uid://bb7muyq88ddaa" path="res://landing_pad.gd" id="1_7t1k5"]
+
+[node name="LandingPad" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_7t1k5")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -2, 24, -2, 24, 0, 0, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -2, 24, -2, 24, 0, 0, 0)
