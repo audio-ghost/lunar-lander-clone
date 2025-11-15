@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ddn3wdmffxl2k"]
 
-[ext_resource type="Texture2D" uid="uid://bopacpr63wr2v" path="res://Assets/LunarLander.png" id="1_4flbx"]
-[ext_resource type="Texture2D" uid="uid://curavkghnt5l3" path="res://Assets/RocketBooster.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bopacpr63wr2v" path="res://Entities/Player/Art/LunarLander.png" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://curavkghnt5l3" path="res://Entities/Player/Art/RocketBooster.png" id="2_onrkg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")

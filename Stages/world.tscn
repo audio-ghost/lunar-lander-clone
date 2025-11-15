@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlkt2ay1061ht"]
 
-[ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://player.tscn" id="1_f3sb7"]
-[ext_resource type="Script" uid="uid://dpy2xjaw7gc36" path="res://player.gd" id="2_fj7yv"]
-[ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://landing_pad.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_yl0jo"]
+[ext_resource type="Script" uid="uid://dpy2xjaw7gc36" path="res://Entities/Player/player.gd" id="2_1b63f"]
+[ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="3_c7d60"]
 
 [node name="World" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_f3sb7")]
+[node name="Player" parent="." instance=ExtResource("1_yl0jo")]
 z_index = 10
 position = Vector2(43, 73)
-script = ExtResource("2_fj7yv")
+script = ExtResource("2_1b63f")
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
@@ -29,26 +29,26 @@ polygon = PackedVector2Array(-21, 64, 6, 50, 79, 50, 93, 66, 76, 83, 42, 92, 26,
 position = Vector2(-3, 44)
 polygon = PackedVector2Array(-21, 64, 6, 50, 79, 50, 93, 66, 76, 83, 42, 92, 26, 137, 35, 178, 60, 205, 82, 237, 106, 249, 159, 255, 204, 248, 231, 257, 246, 288, 282, 288, 314, 252, 281, 221, 313, 196, 349, 199, 360, 222, 368, 254, 398, 254, 401, 224, 412, 188, 381, 156, 316, 159, 256, 179, 191, 205, 131, 194, 102, 152, 131, 111, 175, 90, 206, 62, 243, 74, 248, 116, 328, 116, 341, 67, 369, 46, 424, 30, 461, 62, 478, 109, 474, 171, 438, 213, 446, 256, 474, 284, 552, 284, 575, 249, 555, 212, 574, 159, 542, 125, 562, 69, 608, 42, 672, 47, 673, 369, -49, 368, -49, 64)
 
-[node name="LandingPad" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(260, 160)
 
-[node name="LandingPad2" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad2" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(284, 160)
 
-[node name="LandingPad3" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad3" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(20, 94)
 
-[node name="LandingPad4" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad4" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(44, 94)
 
-[node name="LandingPad5" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad5" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(481, 328)
 
-[node name="LandingPad7" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad7" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(249, 332)
 
-[node name="LandingPad8" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad8" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(369, 298)
 
-[node name="LandingPad6" parent="." instance=ExtResource("3_tlwt5")]
+[node name="LandingPad6" parent="." instance=ExtResource("3_c7d60")]
 position = Vector2(505, 328)

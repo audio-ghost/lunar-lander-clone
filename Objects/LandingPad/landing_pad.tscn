@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2ef1uhb4s70o"]
 
-[ext_resource type="Script" uid="uid://bb7muyq88ddaa" path="res://landing_pad.gd" id="1_7t1k5"]
+[ext_resource type="Script" uid="uid://bb7muyq88ddaa" path="res://Objects/LandingPad/landing_pad.gd" id="1_7t1k5"]
 
 [node name="LandingPad" type="StaticBody2D"]
 collision_layer = 4
