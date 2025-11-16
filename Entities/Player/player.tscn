@@ -78,21 +78,13 @@ collision_mask = 5
 position = Vector2(0, 7)
 polygon = PackedVector2Array(-1, -14, -1, -12, -2, -12, -3, -10, -4, -12, -5, -12, -6, -10, -6, -5, -5, -3, -5, -2, -4, -2, -4, -4, -2, -2, 2, -2, 4, -4, 4, -2, 5, -2, 5, -3, 6, -5, 6, -10, 5, -12, 3.9185982, -12, 3, -10, 2, -12, 1, -12, 1, -14)
 
-[node name="LandingRightArea" type="Area2D" parent="."]
+[node name="LandingArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 5
 
-[node name="LandingColliderRight" type="CollisionPolygon2D" parent="LandingRightArea"]
+[node name="LandingCollider" type="CollisionPolygon2D" parent="LandingArea"]
 position = Vector2(0, 7)
-polygon = PackedVector2Array(5, -2, 4, -1, 4, 0, 7, 0, 7, -1, 6, -2)
-
-[node name="LandingLeftArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 5
-
-[node name="LandingColliderLeft" type="CollisionPolygon2D" parent="LandingLeftArea"]
-position = Vector2(0, 7)
-polygon = PackedVector2Array(-6, -2, -7, -1, -7, 0, -4, 0, -4, -1, -5, -2)
+polygon = PackedVector2Array(-6, -2, -7, -1, -7, 0, -4, 0, -4, -1, 4, -1, 4, 0, 7, 0, 7, -1, 6, -2, -5, -2)
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(-6, 7)
