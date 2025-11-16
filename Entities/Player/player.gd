@@ -95,10 +95,14 @@ func _on_score_changed(new_score: int) -> void:
 	hud.set_score(new_score)
 
 func handle_landing_attempt(landingPad: LandingPad):
-	if is_speed_safe() and is_angle_safe() and both_feet_on_pad():
-		landing_succesful(landingPad)
+	if !is_speed_safe():
+		crash_and_reset("Moving too fast")
+	elif !is_angle_safe():
+		crash_and_reset("Not straight")
+	elif !both_feet_on_pad():
+		crash_and_reset("Edge of Landing Pad")
 	else:
-		crash_and_reset()
+		landing_succesful(landingPad)
 
 func is_speed_safe() -> bool:
 	return get_real_velocity().length() < safe_landing_speed
@@ -117,10 +121,10 @@ func both_feet_on_pad() -> bool:
 	#return ray_cast_2d_left.is_colliding() and ray_cast_2d_right.is_colliding()
 	return true
 
-func crash_and_reset() -> void:
+func crash_and_reset(message = null) -> void:
 	update_points(crash_penalty)
 	play_explosion_effect()
-	hud.display_message("Ship Crashed!", Color.RED)
+	hud.display_message("Ship Crashed!", Color.RED, message)
 	if stats.is_fuel_empty():
 		pass
 	else:
