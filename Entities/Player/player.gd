@@ -2,6 +2,10 @@ class_name Player extends CharacterBody2D
 
 const EXPLOSION_EFFECT = preload("uid://dsyvdfxal0syu")
 
+const ALL_PADS_BONUS = 500
+const NO_CRASH_BONUS = 500
+const FUEL_BONUS_MULT = 1.5
+
 @export var max_speed := 1000.0
 @export var rotation_speed := 125.0
 @export var acceleration := 75.0
@@ -26,7 +30,9 @@ const EXPLOSION_EFFECT = preload("uid://dsyvdfxal0syu")
 
 var ScorePopup = preload("res://Objects/ScorePopup/score_popup.tscn")
 
-var landing_checked = false
+var landing_checked := false
+var received_all_pads_bonus := false
+var crash_counter := 0
 
 func _ready() -> void:
 	ship_collider_area.body_entered.connect(_on_ship_collider_body_entered)
@@ -116,29 +122,24 @@ func is_angle_safe() -> bool:
 	return abs(rotation_degrees) < max_safe_landing_angle 
 
 func both_feet_on_pad() -> bool:
-	# TODO: Check if both feet are on the Landing Pad
-	#print("Is colliding:", ray_cast_2d_right.is_colliding())
-	#var left_hit = ray_cast_2d_left.get_collider()
-	#print(left_hit)
-	#var right_hit = ray_cast_2d_right.get_collider()
-	#print(right_hit)
-	#return left_hit is LandingPad and right_hit is LandingPad
-	#return ray_cast_2d_left.is_colliding() and ray_cast_2d_right.is_colliding()
-	return true
+	return ray_cast_2d_left.is_colliding() and ray_cast_2d_right.is_colliding()
 
 func crash_and_reset(message = null) -> void:
+	crash_counter += 1
 	update_points(crash_penalty)
 	play_explosion_effect()
 	hud.display_message(message if message != null else "Ship Crashed!", Color.RED)
 	if stats.is_fuel_empty():
 		pass
 	else:
+		LandingPadManager.enable_all_pads()
 		reset_player_position()
 
 func landing_succesful(landing_pad: LandingPad) -> void:
-	update_points(landing_pad.get_score_value())
-	landing_pad.process_landing()
-	hud.display_message("Landing Successful!", Color.GREEN)
+	if landing_pad.can_score:
+		update_points(landing_pad.get_score_value())
+		hud.display_message("Landing Successful!", Color.GREEN)
+		landing_pad.process_landing()
 	if stats.is_fuel_empty():
 		pass
 	else:
@@ -164,12 +165,19 @@ func reset_player_position():
 	rotation = 0
 	show()
 
-func _on_landing_pad_landed(pad: LandingPad) -> void:
-	if LandingPadManager.all_pads_landed():
+func _on_landing_pad_landed(_pad: LandingPad) -> void:
+	if not received_all_pads_bonus and LandingPadManager.all_pads_landed():
 		award_all_pads_bonus()
 
 func award_all_pads_bonus():
-	var bonus = 500
-	update_points(bonus)
-	hud.display_message("ALL PADS BONUS! +" + str(bonus), Color.GREEN)
+	received_all_pads_bonus = true
+	update_points(ALL_PADS_BONUS)
+	hud.display_message("ALL PADS BONUS! +" + str(ALL_PADS_BONUS), Color.GREEN)
 	
+	if crash_counter == 0:
+		update_points(NO_CRASH_BONUS)
+		hud.display_message("NO CRASH BONUS! +" + str(NO_CRASH_BONUS), Color.GREEN)
+	
+	var fuel_bonus = int(stats.fuel * FUEL_BONUS_MULT)
+	update_points(fuel_bonus)
+	hud.display_message("FUEL BONUS! +" + str(fuel_bonus), Color.GREEN)

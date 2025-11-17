@@ -4,10 +4,9 @@ extends Node2D
 
 func show_points(amount: int) -> void:
 	label.text = str(amount)
-	if amount >= 0:
-		modulate = Color.GREEN
-	else:
-		modulate = Color.RED
+	modulate = Color.GREEN if amount >= 0 else Color.RED
+	position.y += randi() % 32 - 16
+	position.x += randi() % 32 - 16
 	run_animation()
 
 func run_animation() -> void:

@@ -9,6 +9,8 @@ class_name LandingPad extends StaticBody2D
 @onready var polygon_2d: Polygon2D = $Polygon2D
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 
+var can_score = true
+
 signal landed(pad: LandingPad)
 
 func _ready() -> void:
@@ -39,9 +41,15 @@ func get_score_value() -> int:
 
 func process_landing() -> void:
 	was_landed = true
+	can_score = false
 	scoring_label.text = str(score_value)
 	scoring_label.modulate = Color.GREEN
 	scoring_label.modulate.a = 0.25
+	scoring_label.hide()
 	polygon_2d.modulate = Color.GREEN
 	
 	emit_signal("landed", self)
+
+func enable_landing_pad() -> void:
+	can_score = true
+	scoring_label.show()

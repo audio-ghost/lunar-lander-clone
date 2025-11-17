@@ -29,31 +29,27 @@ polygon = PackedVector2Array(-21, 64, 6, 50, 79, 50, 93, 66, 76, 83, 42, 92, 26,
 [node name="LandingPad" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
 position = Vector2(42, 94)
 pad_width = 60.0
-first_score_value = 10
-score_value = 1
+first_score_value = 20
+score_value = 10
 
 [node name="LandingPad1" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
 position = Vector2(288, 160)
 pad_width = 60.0
 first_score_value = 50
 score_value = 25
-was_landed = true
 
 [node name="LandingPad2" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
 position = Vector2(511, 328)
 pad_width = 60.0
-was_landed = true
 
 [node name="LandingPad3" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
 position = Vector2(260, 332)
 first_score_value = 300
 score_value = 150
-was_landed = true
 
 [node name="LandingPad4" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
 position = Vector2(380, 298)
 first_score_value = 500
 score_value = 250
-was_landed = true
 
 [node name="HUD" parent="." instance=ExtResource("5_c7d60")]

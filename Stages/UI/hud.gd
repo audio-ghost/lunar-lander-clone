@@ -4,7 +4,8 @@ class_name HUD extends CanvasLayer
 @onready var score_label: Label = $ScoreLabel
 @onready var display_text: Label = $DisplayText
 
-var current_tween : Tween
+var message_queue: Array = []
+var is_showing_message: bool = false
 
 func _ready() -> void:
 	reset_message()
@@ -26,19 +27,29 @@ func set_score(amount: int):
 	score_label.text = formatted_amount
 
 func display_message(message: String, color: Color):
-	if current_tween and current_tween.is_running():
-		current_tween.kill()
+	message_queue.append({"text": message, "color": color})
+	if not is_showing_message:
+		_show_next_message()
 	
-	display_text.text = message
-	display_text.modulate = color
+func _show_next_message():
+	if message_queue.is_empty():
+		is_showing_message = false
+		return
+	
+	is_showing_message = true
+	
+	var message = message_queue.pop_front()
+	display_text.text = message["text"]
+	display_text.modulate = message["color"]
 	display_text.modulate.a = 0
 	display_text.show()
 	
-	current_tween = create_tween()
-	current_tween.tween_property(display_text, "modulate:a", 1.0, 0.1)
-	current_tween.tween_interval(1)
-	current_tween.tween_property(display_text, "modulate:a", 0.0, 0.5)
-	current_tween.finished.connect(reset_message)
+	var tween = create_tween()
+	tween.tween_property(display_text, "modulate:a", 1.0, 0.1)
+	tween.tween_interval(1)
+	tween.tween_property(display_text, "modulate:a", 0.0, 0.5)
+	tween.finished.connect(reset_message)
 
 func reset_message():
 	display_text.hide()
+	_show_next_message()

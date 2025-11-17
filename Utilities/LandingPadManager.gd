@@ -14,3 +14,7 @@ func all_pads_landed() -> bool:
 		if not pad.was_landed:
 			return false
 	return true
+
+func enable_all_pads() -> void:
+	for pad in pads:
+		pad.enable_landing_pad()
