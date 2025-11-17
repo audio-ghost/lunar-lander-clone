@@ -14,12 +14,6 @@ position = Vector2(46, 50)
 script = ExtResource("2_1b63f")
 stats = ExtResource("3_1b63f")
 
-[node name="Line2D" type="Line2D" parent="."]
-visible = false
-points = PackedVector2Array(4, 233, 19, 118, 297, 198, 606, 72)
-width = 2.0
-default_color = Color(2.8276816e-06, 0.43996134, 0.027424999, 1)
-
 [node name="GroundBody" type="StaticBody2D" parent="."]
 collision_mask = 0
 
@@ -32,23 +26,34 @@ polygon = PackedVector2Array(-21, 64, 6, 50, 79, 50, 93, 66, 76, 83, 42, 92, 26,
 position = Vector2(-3, 44)
 polygon = PackedVector2Array(-21, 64, 6, 50, 79, 50, 93, 66, 76, 83, 42, 92, 26, 137, 35, 178, 60, 205, 82, 237, 106, 249, 159, 255, 204, 248, 231, 257, 246, 288, 282, 288, 314, 252, 281, 221, 313, 196, 349, 199, 360, 222, 368, 254, 398, 254, 401, 224, 412, 188, 381, 156, 316, 159, 256, 179, 191, 205, 131, 194, 102, 152, 131, 111, 175, 90, 206, 62, 243, 74, 248, 116, 328, 116, 341, 67, 369, 46, 424, 30, 461, 62, 478, 109, 474, 171, 438, 213, 446, 256, 474, 284, 552, 284, 575, 249, 555, 212, 574, 159, 542, 125, 562, 69, 608, 42, 672, 47, 673, 369, -49, 368, -49, 64)
 
-[node name="LandingPad" parent="." instance=ExtResource("3_c7d60")]
-position = Vector2(273, 160)
-
-[node name="LandingPad3" parent="." instance=ExtResource("3_c7d60")]
-position = Vector2(33, 94)
+[node name="LandingPad" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
+position = Vector2(42, 94)
+pad_width = 60.0
+first_score_value = 10
 score_value = 1
 
-[node name="LandingPad5" parent="." instance=ExtResource("3_c7d60")]
-position = Vector2(499, 328)
-score_value = 50
+[node name="LandingPad1" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
+position = Vector2(288, 160)
+pad_width = 60.0
+first_score_value = 50
+score_value = 25
+was_landed = true
 
-[node name="LandingPad7" parent="." instance=ExtResource("3_c7d60")]
-position = Vector2(249, 332)
+[node name="LandingPad2" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
+position = Vector2(511, 328)
+pad_width = 60.0
+was_landed = true
+
+[node name="LandingPad3" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
+position = Vector2(260, 332)
+first_score_value = 300
 score_value = 150
+was_landed = true
 
-[node name="LandingPad8" parent="." instance=ExtResource("3_c7d60")]
-position = Vector2(369, 298)
+[node name="LandingPad4" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
+position = Vector2(380, 298)
+first_score_value = 500
 score_value = 250
+was_landed = true
 
 [node name="HUD" parent="." instance=ExtResource("5_c7d60")]

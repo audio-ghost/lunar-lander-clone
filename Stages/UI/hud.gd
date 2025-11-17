@@ -3,10 +3,11 @@ class_name HUD extends CanvasLayer
 @onready var fuel_bar: ProgressBar = $FuelBar
 @onready var score_label: Label = $ScoreLabel
 @onready var display_text: Label = $DisplayText
-@onready var display_subtext: Label = $DisplaySubtext
+
+var current_tween : Tween
 
 func _ready() -> void:
-	reset_messages()
+	reset_message()
 
 func set_fuel(amount: float, max_fuel: float):
 	fuel_bar.max_value = max_fuel
@@ -24,26 +25,20 @@ func set_score(amount: int):
 		formatted_amount = "0" + formatted_amount
 	score_label.text = formatted_amount
 
-func display_message(message: String, color: Color, submessage = null):
+func display_message(message: String, color: Color):
+	if current_tween and current_tween.is_running():
+		current_tween.kill()
+	
 	display_text.text = message
 	display_text.modulate = color
 	display_text.modulate.a = 0
 	display_text.show()
-	if submessage != null:
-		display_subtext.text = submessage
-		display_subtext.modulate = color
-		display_subtext.modulate.a = 0
-		display_subtext.show()
-	var tween = create_tween()
-	tween.tween_property(display_text, "modulate:a", 1.0, 0.1)
-	if submessage != null:
-		tween.tween_property(display_subtext, "modulate:a", 1.0, 0.1)
-	tween.tween_interval(1)
-	tween.tween_property(display_text, "modulate:a", 0.0, 0.5)
-	if submessage != null:
-		tween.parallel().tween_property(display_subtext, "modulate:a", 0.0, 0.5)
-	tween.finished.connect(reset_messages)
+	
+	current_tween = create_tween()
+	current_tween.tween_property(display_text, "modulate:a", 1.0, 0.1)
+	current_tween.tween_interval(1)
+	current_tween.tween_property(display_text, "modulate:a", 0.0, 0.5)
+	current_tween.finished.connect(reset_message)
 
-func reset_messages():
+func reset_message():
 	display_text.hide()
-	display_subtext.hide()

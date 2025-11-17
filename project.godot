@@ -15,6 +15,10 @@ run/main_scene="uid://dlkt2ay1061ht"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LandingPadManager="*res://Utilities/LandingPadManager.gd"
+
 [display]
 
 window/size/viewport_width=640

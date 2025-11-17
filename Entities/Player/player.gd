@@ -33,11 +33,16 @@ func _ready() -> void:
 	landing_area.body_entered.connect(_on_landing_body_entered)
 	rockets_a_sprite_2d.hide()
 	call_deferred("_connect_to_hud")
+	call_deferred("_connect_to_landing_pads")
 
 func _connect_to_hud():
 	stats.fuel_changed.connect(_on_fuel_changed)
 	_on_fuel_changed(stats.fuel)
 	stats.score_changed.connect(_on_score_changed)
+
+func _connect_to_landing_pads():
+	for pad in LandingPadManager.pads:
+		pad.landed.connect(_on_landing_pad_landed)
 
 func _physics_process(delta: float) -> void:
 	landing_checked = false
@@ -94,15 +99,15 @@ func _on_fuel_changed(new_fuel: float) -> void:
 func _on_score_changed(new_score: int) -> void:
 	hud.set_score(new_score)
 
-func handle_landing_attempt(landingPad: LandingPad):
+func handle_landing_attempt(landing_pad: LandingPad):
 	if !is_speed_safe():
-		crash_and_reset("Moving too fast")
+		crash_and_reset("Moving too fast!")
 	elif !is_angle_safe():
-		crash_and_reset("Not straight")
+		crash_and_reset("Not straight!")
 	elif !both_feet_on_pad():
-		crash_and_reset("Edge of Landing Pad")
+		crash_and_reset("Edge of Landing Pad!")
 	else:
-		landing_succesful(landingPad)
+		landing_succesful(landing_pad)
 
 func is_speed_safe() -> bool:
 	return get_real_velocity().length() < safe_landing_speed
@@ -124,14 +129,15 @@ func both_feet_on_pad() -> bool:
 func crash_and_reset(message = null) -> void:
 	update_points(crash_penalty)
 	play_explosion_effect()
-	hud.display_message("Ship Crashed!", Color.RED, message)
+	hud.display_message(message if message != null else "Ship Crashed!", Color.RED)
 	if stats.is_fuel_empty():
 		pass
 	else:
 		reset_player_position()
 
-func landing_succesful(landingPad: LandingPad) -> void:
-	update_points(landingPad.score_value)
+func landing_succesful(landing_pad: LandingPad) -> void:
+	update_points(landing_pad.get_score_value())
+	landing_pad.process_landing()
 	hud.display_message("Landing Successful!", Color.GREEN)
 	if stats.is_fuel_empty():
 		pass
@@ -157,3 +163,13 @@ func reset_player_position():
 	velocity = Vector2.ZERO
 	rotation = 0
 	show()
+
+func _on_landing_pad_landed(pad: LandingPad) -> void:
+	if LandingPadManager.all_pads_landed():
+		award_all_pads_bonus()
+
+func award_all_pads_bonus():
+	var bonus = 500
+	update_points(bonus)
+	hud.display_message("ALL PADS BONUS! +" + str(bonus), Color.GREEN)
+	
