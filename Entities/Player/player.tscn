@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddn3wdmffxl2k"]
+[gd_scene load_steps=11 format=3 uid="uid://ddn3wdmffxl2k"]
 
 [ext_resource type="Texture2D" uid="uid://bopacpr63wr2v" path="res://Entities/Player/Art/LunarLander.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dpy2xjaw7gc36" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://curavkghnt5l3" path="res://Entities/Player/Art/RocketBooster.png" id="2_onrkg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
@@ -53,6 +54,7 @@ size = Vector2(8, 9)
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
+script = ExtResource("1_lu8i8")
 
 [node name="ShipASprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

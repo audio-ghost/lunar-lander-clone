@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://uqwq3fk61v65"]
+
+[ext_resource type="Script" uid="uid://lla823ge5yyg" path="res://Stages/LevelSelect/Data/level_button.gd" id="1_nnit1"]
+
+[node name="LevelButton" type="Button"]
+custom_minimum_size = Vector2(150, 80)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Default Text"
+script = ExtResource("1_nnit1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

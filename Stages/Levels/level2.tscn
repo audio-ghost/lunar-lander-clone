@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://co6d4oan2vqpi"]
+
+[ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_gynn7"]
+[ext_resource type="Resource" uid="uid://cbl4iksdn115k" path="res://Entities/Player/Data/stats.tres" id="3_hedku"]
+[ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="4_b3n3k"]
+[ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_vp6xm"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_gynn7")]
+z_index = 10
+position = Vector2(96, 171)
+stats = ExtResource("3_hedku")
+
+[node name="GroundBody" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="GroundBody"]
+position = Vector2(-3, 44)
+color = Color(0.6558965, 0.7385241, 0.49537015, 1)
+polygon = PackedVector2Array(64, 278, 64, 179, 133, 179, 133, 53, 194, 53, 194, 191, 267, 191, 267, 134, 319, 134, 319, 254, 398, 254, 398, 63, 465, 63, 465, 293, 545, 293, 545, 148, 602, 148, 602, 283, 673, 283, 673, 369, -49, 368, -49, 278)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundBody"]
+visible = false
+position = Vector2(-3, 44)
+polygon = PackedVector2Array(64, 278, 64, 179, 133, 179, 133, 53, 194, 53, 194, 191, 267, 191, 267, 134, 319, 134, 319, 254, 398, 254, 398, 63, 465, 63, 465, 293, 545, 293, 545, 148, 602, 148, 602, 283, 673, 283, 673, 369, -49, 368, -49, 278)
+
+[node name="LandingPad" parent="." instance=ExtResource("4_b3n3k")]
+position = Vector2(96, 223)
+pad_width = 48.0
+first_score_value = 50
+score_value = 25
+
+[node name="LandingPad1" parent="." instance=ExtResource("4_b3n3k")]
+position = Vector2(428, 107)
+pad_width = 48.0
+first_score_value = 150
+score_value = 75
+
+[node name="LandingPad2" parent="." instance=ExtResource("4_b3n3k")]
+position = Vector2(502, 337)
+pad_width = 48.0
+first_score_value = 200
+score_value = 100
+
+[node name="LandingPad3" parent="." instance=ExtResource("4_b3n3k")]
+position = Vector2(160, 96)
+pad_width = 48.0
+
+[node name="LandingPad4" parent="." instance=ExtResource("4_b3n3k")]
+position = Vector2(357, 298)
+pad_width = 48.0
+first_score_value = 300
+score_value = 150
+
+[node name="LandingPad5" parent="." instance=ExtResource("4_b3n3k")]
+position = Vector2(227, 235)
+pad_width = 48.0
+first_score_value = 250
+score_value = 125
+
+[node name="HUD" parent="." instance=ExtResource("5_vp6xm")]

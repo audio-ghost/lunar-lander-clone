@@ -136,6 +136,7 @@ func crash_and_reset(message = null) -> void:
 		reset_player_position()
 
 func landing_succesful(landing_pad: LandingPad) -> void:
+	starting_position = global_position
 	if landing_pad.can_score:
 		update_points(landing_pad.get_score_value())
 		hud.display_message("Landing Successful!", Color.GREEN)
