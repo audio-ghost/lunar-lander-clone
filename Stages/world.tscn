@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlkt2ay1061ht"]
 
+[ext_resource type="Script" uid="uid://ck68te1boodmn" path="res://Stages/world.gd" id="1_c7d60"]
 [ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_yl0jo"]
-[ext_resource type="Script" uid="uid://dpy2xjaw7gc36" path="res://Entities/Player/player.gd" id="2_1b63f"]
 [ext_resource type="Resource" uid="uid://cbl4iksdn115k" path="res://Entities/Player/Data/stats.tres" id="3_1b63f"]
 [ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="3_c7d60"]
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_c7d60"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_c7d60")
 
 [node name="Player" parent="." instance=ExtResource("1_yl0jo")]
 z_index = 10
 position = Vector2(46, 50)
-script = ExtResource("2_1b63f")
 stats = ExtResource("3_1b63f")
 
 [node name="GroundBody" type="StaticBody2D" parent="."]
@@ -31,25 +31,5 @@ position = Vector2(42, 94)
 pad_width = 60.0
 first_score_value = 20
 score_value = 10
-
-[node name="LandingPad1" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
-position = Vector2(288, 160)
-pad_width = 60.0
-first_score_value = 50
-score_value = 25
-
-[node name="LandingPad2" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
-position = Vector2(511, 328)
-pad_width = 60.0
-
-[node name="LandingPad3" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
-position = Vector2(260, 332)
-first_score_value = 300
-score_value = 150
-
-[node name="LandingPad4" parent="." groups=["landing_pads"] instance=ExtResource("3_c7d60")]
-position = Vector2(380, 298)
-first_score_value = 500
-score_value = 250
 
 [node name="HUD" parent="." instance=ExtResource("5_c7d60")]

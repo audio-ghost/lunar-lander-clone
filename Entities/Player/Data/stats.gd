@@ -23,3 +23,7 @@ signal score_changed(new_score)
 
 func is_fuel_empty() -> bool :
 	return fuel < 0.0
+
+func reset():
+	score = 0
+	fuel = max_fuel

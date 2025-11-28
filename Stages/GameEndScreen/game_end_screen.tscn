@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://6a1vn383hxip"]
+
+[ext_resource type="Script" uid="uid://kwr4vow3d66h" path="res://Stages/GameEndScreen/game_end_screen.gd" id="1_1m15n"]
+
+[node name="GameEndScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1m15n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 0.65882355)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -31.0
+offset_right = 43.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Score"
+horizontal_alignment = 1
+
+[node name="HighScoresLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "High Scores"
+
+[node name="LeaderboardContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer/LeaderboardContainer"]
+layout_mode = 2
+
+[node name="NameHeader" type="Label" parent="VBoxContainer/LeaderboardContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Name"
+
+[node name="ScoreHeader" type="Label" parent="VBoxContainer/LeaderboardContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ScoresList" type="VBoxContainer" parent="VBoxContainer/LeaderboardContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="NameEntryContainer" type="BoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/NameEntryContainer"]
+layout_mode = 2
+text = "New High Score!"
+
+[node name="NameEntryLineEdit" type="LineEdit" parent="VBoxContainer/NameEntryContainer"]
+layout_mode = 2
+
+[node name="NameEntryButton" type="Button" parent="VBoxContainer/NameEntryContainer"]
+layout_mode = 2
+text = "Submit"

@@ -10,6 +10,7 @@ func _ready() -> void:
 	level_select_button.pressed.connect(_on_level_select_pressed)
 	high_scores_button.pressed.connect(_on_high_scores_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
+	start_button.grab_focus()
 
 func _on_start_pressed():
 	SceneLoader.load_scene("res://Stages/world.tscn")

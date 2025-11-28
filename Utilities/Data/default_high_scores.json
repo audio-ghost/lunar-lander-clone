@@ -1,0 +1,37 @@
+{
+	"level_1": [
+		{ "name": "AAA", "score": 1000 },
+		{ "name": "BBB", "score": 800 },
+		{ "name": "CCC", "score": 600 },
+		{ "name": "DDD", "score": 400 },
+		{ "name": "EEE", "score": 200 }
+	],
+	"level_2": [
+		{ "name": "AAA", "score": 1000 },
+		{ "name": "BBB", "score": 800 },
+		{ "name": "CCC", "score": 600 },
+		{ "name": "DDD", "score": 400 },
+		{ "name": "EEE", "score": 200 }
+	],
+	"level_3": [
+		{ "name": "AAA", "score": 1000 },
+		{ "name": "BBB", "score": 800 },
+		{ "name": "CCC", "score": 600 },
+		{ "name": "DDD", "score": 400 },
+		{ "name": "EEE", "score": 200 }
+	],
+	"level_4": [
+		{ "name": "AAA", "score": 1000 },
+		{ "name": "BBB", "score": 800 },
+		{ "name": "CCC", "score": 600 },
+		{ "name": "DDD", "score": 400 },
+		{ "name": "EEE", "score": 200 }
+	],
+	"level_5": [
+		{ "name": "AAA", "score": 1000 },
+		{ "name": "BBB", "score": 800 },
+		{ "name": "CCC", "score": 600 },
+		{ "name": "DDD", "score": 400 },
+		{ "name": "EEE", "score": 200 }
+	]
+}

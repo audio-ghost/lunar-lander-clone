@@ -6,29 +6,31 @@ extends Control
 var level_data = [
 	{
 		"name": "Level 1",
-		"path": "res://Stages/Levels/level1.tscn"
+		"path": "res://Stages/Levels/level_1.tscn"
 	},
 	{
 		"name": "Level 2",
-		"path": "res://Stages/Levels/level2.tscn"
+		"path": "res://Stages/Levels/level_2.tscn"
 	},
 	{
 		"name": "Level 3",
-		"path": "res://Stages/Levels/level3 .tscn"
+		"path": "res://Stages/Levels/level_3 .tscn"
 	},
 	{
 		"name": "Level 4",
-		"path": "res://Stages/Levels/level4.tscn"
+		"path": "res://Stages/Levels/level_4.tscn"
 	},
 	{
 		"name": "Level 5",
-		"path": "res://Stages/Levels/level5.tscn"
+		"path": "res://Stages/Levels/level_5.tscn"
 	}
 ]
 
 func _ready() -> void:
 	_build_level_buttons()
 	back_button.pressed.connect(_on_back_button_pressed)
+	await get_tree().process_frame
+	level_grid.get_children()[0].grab_focus()
 
 func _build_level_buttons():
 	var level_button_scene = load("res://Stages/LevelSelect/Data/level_button.tscn")

@@ -34,6 +34,9 @@ var landing_checked := false
 var received_all_pads_bonus := false
 var crash_counter := 0
 
+signal player_game_over
+signal player_level_complete
+
 func _ready() -> void:
 	ship_collider_area.body_entered.connect(_on_ship_collider_body_entered)
 	landing_area.body_entered.connect(_on_landing_body_entered)
@@ -130,7 +133,7 @@ func crash_and_reset(message = null) -> void:
 	play_explosion_effect()
 	hud.display_message(message if message != null else "Ship Crashed!", Color.RED)
 	if stats.is_fuel_empty():
-		pass
+		handle_game_over()
 	else:
 		LandingPadManager.enable_all_pads()
 		reset_player_position()
@@ -142,9 +145,9 @@ func landing_succesful(landing_pad: LandingPad) -> void:
 		hud.display_message("Landing Successful!", Color.GREEN)
 		landing_pad.process_landing()
 	if stats.is_fuel_empty():
-		pass
-	else:
-		pass
+		handle_game_over()
+	elif LandingPadManager.all_pads_landed():
+		handle_level_complete()
 
 func update_points(points: int) -> void:
 	stats.score += points
@@ -182,3 +185,9 @@ func award_all_pads_bonus():
 	var fuel_bonus = int(stats.fuel * FUEL_BONUS_MULT)
 	update_points(fuel_bonus)
 	hud.display_message("FUEL BONUS! +" + str(fuel_bonus), Color.GREEN)
+
+func handle_game_over():
+	emit_signal("player_game_over", stats.score)
+
+func handle_level_complete():
+	emit_signal("player_level_complete", stats.score)
