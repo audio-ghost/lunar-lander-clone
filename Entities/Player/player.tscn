@@ -113,3 +113,4 @@ bus = &"SFX"
 
 [node name="LandingAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_4wf4l")
+bus = &"SFX"

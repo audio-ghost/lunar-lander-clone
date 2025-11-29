@@ -59,8 +59,8 @@ func _on_restart_pressed():
 
 func _on_level_select_button_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Stages/LevelSelect/level_select.tscn")
+	get_tree().change_scene_to_file("res://Stages/Menus/LevelSelect/level_select.tscn")
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Stages/TitleScreen/title_screen.tscn")
+	get_tree().change_scene_to_file("res://Stages/Menus/TitleScreen/title_screen.tscn")

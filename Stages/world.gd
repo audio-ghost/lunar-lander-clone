@@ -1,6 +1,6 @@
 extends Node2D
 
-var end_screen = preload("res://Stages/GameEndScreen/game_end_screen.tscn")
+var end_screen = preload("res://Stages/Menus/GameEndScreen/game_end_screen.tscn")
 
 @onready var player: Player = $Player
 @onready var background_texture_rect: TextureRect = $BackgroundTextureRect
@@ -18,7 +18,6 @@ func show_game_end_screen(is_level_complete: bool, score: int):
 	add_child(screen)
 	var level_name : String = get_scene_file_path().get_file().get_basename()
 	screen.setup(is_level_complete, score, level_name)
-
 
 func _on_player_game_over(score):
 	show_game_end_screen(false, score)

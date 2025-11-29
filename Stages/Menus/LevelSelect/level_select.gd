@@ -39,7 +39,7 @@ func _ready() -> void:
 	level_grid.get_children()[0].grab_focus()
 
 func _build_level_buttons():
-	var level_button_scene = load("res://Stages/LevelSelect/Data/level_button.tscn")
+	var level_button_scene = load("res://Stages/Menus/LevelSelect/Data/level_button.tscn")
 	
 	for lvl in level_data:
 		var btn = level_button_scene.instantiate()
@@ -57,4 +57,4 @@ func _build_level_buttons():
 		level_grid.add_child(btn)
 
 func _on_back_button_pressed():
-	SceneLoader.load_scene("res://Stages/TitleScreen/title_screen.tscn")
+	SceneLoader.load_scene("res://Stages/Menus/TitleScreen/title_screen.tscn")

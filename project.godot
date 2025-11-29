@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 LandingPadManager="*res://Utilities/LandingPadManager.gd"
 SceneLoader="*res://Utilities/SceneLoader.gd"
 HighScoreManager="*res://Utilities/HighScoreManager.gd"
+SettingsManager="*res://Utilities/SettingsManager.gd"
 
 [display]
 

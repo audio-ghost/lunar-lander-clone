@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkr6oma0ys0dr"]
 
-[ext_resource type="Script" uid="uid://bcwiwactmdpj3" path="res://Stages/LevelSelect/level_select.gd" id="1_hjnuw"]
-[ext_resource type="PackedScene" uid="uid://com2edqyokjag" path="res://Stages/HighScoresDisplay/high_scores_display.tscn" id="2_o0svm"]
+[ext_resource type="Script" uid="uid://bcwiwactmdpj3" path="res://Stages/Menus/LevelSelect/level_select.gd" id="1_hjnuw"]
+[ext_resource type="PackedScene" uid="uid://com2edqyokjag" path="res://Stages/Menus/HighScoresDisplay/high_scores_display.tscn" id="2_o0svm"]
 
 [node name="LevelSelect" type="Control"]
 process_mode = 3

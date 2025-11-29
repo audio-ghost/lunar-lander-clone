@@ -45,8 +45,6 @@ func _create_default_file():
 
 func save_scores():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file: print(file)
-	else: print("No file!")
 	file.store_string(JSON.stringify(scores, "\t"))
 	file.close()
 
