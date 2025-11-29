@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://6a1vn383hxip"]
+[gd_scene load_steps=3 format=3 uid="uid://6a1vn383hxip"]
 
 [ext_resource type="Script" uid="uid://kwr4vow3d66h" path="res://Stages/GameEndScreen/game_end_screen.gd" id="1_1m15n"]
+[ext_resource type="PackedScene" uid="uid://com2edqyokjag" path="res://Stages/HighScoresDisplay/high_scores_display.tscn" id="2_lajtg"]
 
 [node name="GameEndScreen" type="CanvasLayer"]
 process_mode = 3
@@ -34,30 +35,7 @@ layout_mode = 2
 text = "Score"
 horizontal_alignment = 1
 
-[node name="HighScoresLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "High Scores"
-
-[node name="LeaderboardContainer" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Header" type="HBoxContainer" parent="VBoxContainer/LeaderboardContainer"]
-layout_mode = 2
-
-[node name="NameHeader" type="Label" parent="VBoxContainer/LeaderboardContainer/Header"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Name"
-
-[node name="ScoreHeader" type="Label" parent="VBoxContainer/LeaderboardContainer/Header"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Score"
-horizontal_alignment = 2
-
-[node name="ScoresList" type="VBoxContainer" parent="VBoxContainer/LeaderboardContainer"]
+[node name="HighScoresDisplay" parent="VBoxContainer" instance=ExtResource("2_lajtg")]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]

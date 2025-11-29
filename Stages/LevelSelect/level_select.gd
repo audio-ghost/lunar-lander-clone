@@ -2,27 +2,33 @@ extends Control
 
 @onready var level_grid: GridContainer = $MarginContainer/VBoxContainer/LevelGrid
 @onready var back_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/BackButton
+@onready var high_scores_display: HighScoresDisplay = $MarginContainer/VBoxContainer/HighScoresDisplay
 
 var level_data = [
 	{
 		"name": "Level 1",
-		"path": "res://Stages/Levels/level_1.tscn"
+		"path": "res://Stages/Levels/level_1.tscn",
+		"filename": "level_1"
 	},
 	{
 		"name": "Level 2",
-		"path": "res://Stages/Levels/level_2.tscn"
+		"path": "res://Stages/Levels/level_2.tscn",
+		"filename": "level_2"
 	},
 	{
 		"name": "Level 3",
-		"path": "res://Stages/Levels/level_3 .tscn"
+		"path": "res://Stages/Levels/level_3.tscn",
+		"filename": "level_3"
 	},
 	{
 		"name": "Level 4",
-		"path": "res://Stages/Levels/level_4.tscn"
+		"path": "res://Stages/Levels/level_4.tscn",
+		"filename": "level_4"
 	},
 	{
 		"name": "Level 5",
-		"path": "res://Stages/Levels/level_5.tscn"
+		"path": "res://Stages/Levels/level_5.tscn",
+		"filename": "level_5"
 	}
 ]
 
@@ -42,6 +48,10 @@ func _build_level_buttons():
 		
 		btn.pressed.connect(func():
 			SceneLoader.load_scene(lvl["path"])
+		)
+		
+		btn.focus_entered.connect(func():
+			high_scores_display.show_high_scores(lvl["filename"])
 		)
 		
 		level_grid.add_child(btn)

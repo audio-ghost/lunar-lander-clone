@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://com2edqyokjag"]
+
+[ext_resource type="Script" uid="uid://c3pnnj8hlaced" path="res://Stages/HighScoresDisplay/high_scores_display.gd" id="1_h1rx8"]
+
+[node name="HighScoresDisplay" type="VBoxContainer"]
+offset_right = 94.0
+offset_bottom = 54.0
+script = ExtResource("1_h1rx8")
+
+[node name="HighScoresLabel" type="Label" parent="."]
+layout_mode = 2
+text = "High Scores"
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameHeader" type="Label" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Name"
+
+[node name="ScoreHeader" type="Label" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ScoresList" type="VBoxContainer" parent="."]
+layout_mode = 2

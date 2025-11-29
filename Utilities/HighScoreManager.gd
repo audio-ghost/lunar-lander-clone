@@ -25,6 +25,10 @@ func load_scores():
 	
 	if scores == null:
 		scores = {}
+	else:
+		for level in scores.keys():
+			for entry in scores[level]:
+				entry["score"] = int(entry["score"])
 
 func _create_default_file():
 	var default_file := FileAccess.open(DEFAULT_PATH, FileAccess.READ)
@@ -57,9 +61,9 @@ func is_high_score(level_name: String, score: int) -> bool:
 		return true
 	return score > list.back().score
 
-func add_score(level_name: String, name: String, score: int):
+func add_score(level_name: String, player_name: String, score: int):
 	var list = get_scores(level_name)
-	list.append({"name": name, "score": score})
+	list.append({"name": player_name, "score": score})
 	
 	#sort list highest to lowest
 	list.sort_custom(func(a, b): return a.score > b.score)
