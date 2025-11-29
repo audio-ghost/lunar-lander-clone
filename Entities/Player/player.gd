@@ -94,7 +94,6 @@ func handle_acceleration(delta):
 			thrusters_audio_stream_player.play()
 		elif thrusters_audio_stream_player.get_playback_position() > 0.3:
 			thrusters_audio_stream_player.seek(0.1)
-		print(velocity.length())
 		if velocity.length() > max_speed and not received_max_speed_bonus:
 			award_max_speed_bonus()
 			
