@@ -19,6 +19,7 @@ func show_game_end_screen(is_level_complete: bool, score: int):
 	var level_name : String = get_scene_file_path().get_file().get_basename()
 	screen.setup(is_level_complete, score, level_name)
 
+
 func _on_player_game_over(score):
 	show_game_end_screen(false, score)
 

@@ -69,7 +69,7 @@ score_value = 25
 stream = ExtResource("6_p770c")
 autoplay = true
 bus = &"Music"
-parameters/looping = false
+parameters/looping = true
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 z_index = -1

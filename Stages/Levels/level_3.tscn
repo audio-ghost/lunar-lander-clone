@@ -61,7 +61,7 @@ score_value = 250
 stream = ExtResource("6_vynsy")
 autoplay = true
 bus = &"Music"
-parameters/looping = false
+parameters/looping = true
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 z_index = -1

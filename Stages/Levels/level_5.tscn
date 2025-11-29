@@ -54,7 +54,7 @@ position = Vector2(451, 261)
 stream = ExtResource("6_ds476")
 autoplay = true
 bus = &"Music"
-parameters/looping = false
+parameters/looping = true
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 z_index = -1

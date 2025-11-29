@@ -35,7 +35,6 @@ const FUEL_BONUS_MULT = 1.5
 
 var ScorePopup = preload("res://Objects/ScorePopup/score_popup.tscn")
 
-var can_process_input = true
 var landing_checked := false
 var received_all_pads_bonus := false
 var received_max_speed_bonus := false
@@ -65,11 +64,12 @@ func _physics_process(delta: float) -> void:
 	landing_checked = false
 	if is_on_floor():
 		velocity = Vector2.ZERO
+		if stats.is_fuel_empty():
+			handle_game_over()
 		
 	apply_gravity(delta)
-	if can_process_input:
-		apply_rotation(delta)
-		handle_acceleration(delta)
+	apply_rotation(delta)
+	handle_acceleration(delta)
 	move_and_slide()
 	screen_wrap()
 
@@ -102,7 +102,8 @@ func handle_acceleration(delta):
 		rockets_a_sprite_2d.hide()
 
 func disable_player_input():
-	can_process_input = false
+	set_process_input(false)
+	set_physics_process(false)
 
 func burn_fuel(fuel_use_rate, delta):
 	stats.fuel -= fuel_use_rate * delta
