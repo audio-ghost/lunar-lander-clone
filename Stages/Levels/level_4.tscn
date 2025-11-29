@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4g1p3n3t6lu0"]
+[gd_scene load_steps=8 format=3 uid="uid://d4g1p3n3t6lu0"]
 
 [ext_resource type="Script" uid="uid://ck68te1boodmn" path="res://Stages/world.gd" id="1_8ery4"]
 [ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_xadeb"]
 [ext_resource type="Resource" uid="uid://cbl4iksdn115k" path="res://Entities/Player/Data/stats.tres" id="2_8ery4"]
 [ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="3_vhxmo"]
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="4_igytm"]
+[ext_resource type="AudioStream" uid="uid://ckqvpsiua2au2" path="res://Stages/Levels/Sounds/Echo(loop) - hollow - scary - anxiety.mp3" id="6_p770c"]
+[ext_resource type="Texture2D" uid="uid://mmfewdd0qb7e" path="res://Stages/Levels/Art/Blue_Nebula_04-1024x1024.png" id="7_4lxqw"]
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_8ery4")
@@ -19,7 +21,7 @@ collision_mask = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="GroundBody"]
 position = Vector2(1, 42)
-color = Color(0.6350003, 0.393579, 0.18319118, 1)
+color = Color(0.1922588, 0.03348868, 0.011539107, 1)
 polygon = PackedVector2Array(108, -69, 108, -6, 95, -9, 78, -7, 65, -3, 55, 6, 50, 23, 47, 37, 43, 50, 44, 69, 46, 83, 50, 91, 59, 94, 114, 94, 122, 86, 134, 80, 150, 78, 163, 80, 172, 91, 174, 106, 173, 117, 168, 126, 153, 133, 135, 140, 108, 141, 92, 140, 68, 142, 52, 144, 42, 148, 35, 157, 33, 167, 35, 179, 34, 189, 23, 198, 17, 211, 15, 225, 17, 240, 23, 252, 28, 258, 34, 262, 107, 262, 114, 256, 119, 249, 124, 238, 126, 225, 124, 217, 126, 208, 132, 199, 144, 193, 159, 189, 174, 192, 183, 200, 192, 211, 196, 221, 194, 235, 188, 244, 166, 255, 157, 263, 154, 273, 153, 288, 157, 299, 162, 304, 169, 307, 255, 307, 268, 296, 270, 278, 265, 256, 259, 247, 249, 243, 245, 233, 251, 225, 265, 224, 277, 227, 287, 237, 291, 253, 295, 259, 324.4727, 259.00003, 350, 259, 361, 257, 368, 254, 377, 248, 384, 240, 390, 231, 385, 220, 367, 218, 352, 218, 347, 211, 351, 200, 365, 198, 385, 201, 410, 208, 426, 214, 436, 222, 448, 224, 459, 220, 470, 221, 472, 225, 471, 232, 468, 238, 459, 246, 451, 254, 446, 263, 446, 269, 449, 279, 456, 291, 463, 301, 474, 307, 537, 307, 548, 297, 558, 282, 561, 267, 561, 259, 559, 246, 553, 236, 542, 220, 530, 207, 519, 196, 505, 188, 474, 178, 443, 174, 418, 166, 412, 157, 408, 142, 407, 128, 407, 117, 411, 111, 419, 105, 430, 99, 448, 91, 463, 86, 474, 85, 486, 86, 498, 88, 508, 90, 514, 93, 516, 101, 513, 107, 509, 110, 508, 115, 512, 126, 519, 136, 528, 142, 585, 142, 599, 129, 605, 113, 612, 95, 612, 79, 614, 62, 607, 44, 596, 22, 582, 4, 559, -1, 543, 0, 526, 5, 504, 16, 486, 25, 464, 31, 430, 35, 381, 39, 340, 41, 297, 39, 263, 35, 223, 28, 183, 16, 155, 6, 130, -4, 108, -6, 108, -69, 673, -69, 673, 369, -49, 368, -49, -69)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundBody"]
@@ -62,3 +64,19 @@ first_score_value = 50
 score_value = 25
 
 [node name="HUD" parent="." instance=ExtResource("4_igytm")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_p770c")
+autoplay = true
+bus = &"Music"
+parameters/looping = false
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -158.0
+offset_top = -158.0
+offset_right = 866.0
+offset_bottom = 866.0
+pivot_offset = Vector2(512, 512)
+texture = ExtResource("7_4lxqw")
+stretch_mode = 4

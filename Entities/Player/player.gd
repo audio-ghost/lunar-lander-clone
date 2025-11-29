@@ -4,6 +4,7 @@ const EXPLOSION_EFFECT = preload("uid://dsyvdfxal0syu")
 
 const ALL_PADS_BONUS = 500
 const NO_CRASH_BONUS = 500
+const MAX_SPEED_BONUS = 500
 const FUEL_BONUS_MULT = 1.5
 
 @export var max_speed := 1000.0
@@ -24,15 +25,22 @@ const FUEL_BONUS_MULT = 1.5
 @onready var ray_cast_2d_left: RayCast2D = $RayCast2DLeft
 @onready var ray_cast_2d_right: RayCast2D = $RayCast2DRight
 
+@onready var crash_audio_stream_player: AudioStreamPlayer2D = $CrashAudioStreamPlayer
+@onready var thrusters_audio_stream_player: AudioStreamPlayer2D = $ThrustersAudioStreamPlayer
+@onready var landing_audio_stream_player: AudioStreamPlayer2D = $LandingAudioStreamPlayer
+
 @onready var screen_size = get_viewport_rect().size
 @onready var starting_position = global_position
 @onready var hud: HUD = get_tree().current_scene.get_node("HUD")
 
 var ScorePopup = preload("res://Objects/ScorePopup/score_popup.tscn")
 
+var can_process_input = true
 var landing_checked := false
 var received_all_pads_bonus := false
+var received_max_speed_bonus := false
 var crash_counter := 0
+var last_successful_landing_pad : LandingPad = null
 
 signal player_game_over
 signal player_level_complete
@@ -59,8 +67,9 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		
 	apply_gravity(delta)
-	apply_rotation(delta)
-	handle_acceleration(delta)
+	if can_process_input:
+		apply_rotation(delta)
+		handle_acceleration(delta)
 	move_and_slide()
 	screen_wrap()
 
@@ -81,8 +90,19 @@ func handle_acceleration(delta):
 		velocity += thrust * delta
 		burn_fuel(main_thruster_fuel_use_rate, delta)
 		rockets_a_sprite_2d.show()
+		if !thrusters_audio_stream_player.playing:
+			thrusters_audio_stream_player.play()
+		elif thrusters_audio_stream_player.get_playback_position() > 0.3:
+			thrusters_audio_stream_player.seek(0.1)
+		print(velocity.length())
+		if velocity.length() > max_speed and not received_max_speed_bonus:
+			award_max_speed_bonus()
+			
 	else:
 		rockets_a_sprite_2d.hide()
+
+func disable_player_input():
+	can_process_input = false
 
 func burn_fuel(fuel_use_rate, delta):
 	stats.fuel -= fuel_use_rate * delta
@@ -128,6 +148,7 @@ func both_feet_on_pad() -> bool:
 	return ray_cast_2d_left.is_colliding() and ray_cast_2d_right.is_colliding()
 
 func crash_and_reset(message = null) -> void:
+	crash_audio_stream_player.play()
 	crash_counter += 1
 	update_points(crash_penalty)
 	play_explosion_effect()
@@ -140,7 +161,8 @@ func crash_and_reset(message = null) -> void:
 
 func landing_succesful(landing_pad: LandingPad) -> void:
 	starting_position = global_position
-	if landing_pad.can_score:
+	if landing_pad != last_successful_landing_pad and landing_pad.can_score:
+		landing_audio_stream_player.play()
 		update_points(landing_pad.get_score_value())
 		hud.display_message("Landing Successful!", Color.GREEN)
 		landing_pad.process_landing()
@@ -148,6 +170,7 @@ func landing_succesful(landing_pad: LandingPad) -> void:
 		handle_game_over()
 	elif LandingPadManager.all_pads_landed():
 		handle_level_complete()
+	last_successful_landing_pad = landing_pad
 
 func update_points(points: int) -> void:
 	stats.score += points
@@ -186,8 +209,15 @@ func award_all_pads_bonus():
 	update_points(fuel_bonus)
 	hud.display_message("FUEL BONUS! +" + str(fuel_bonus), Color.GREEN)
 
+func award_max_speed_bonus():
+	received_max_speed_bonus = true
+	update_points(MAX_SPEED_BONUS)
+	hud.display_message("MAX SPEED BONUS! +" + str(MAX_SPEED_BONUS), Color.GREEN)
+
 func handle_game_over():
+	disable_player_input()
 	emit_signal("player_game_over", stats.score)
 
 func handle_level_complete():
+	disable_player_input()
 	emit_signal("player_level_complete", stats.score)

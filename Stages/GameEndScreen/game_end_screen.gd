@@ -36,11 +36,11 @@ func ask_for_name(score: int):
 	pending_score = score
 
 func _on_name_submit_pressed():
-	var name = name_entry_line_edit.text.strip_edges()
-	if name == "":
-		name == "AAA"
+	var player_name = name_entry_line_edit.text.strip_edges()
+	if player_name == "":
+		player_name == "AAA"
 	
-	HighScoreManager.add_score(current_level_name, name, pending_score)
+	HighScoreManager.add_score(current_level_name, player_name, pending_score)
 	
 	name_entry_container.visible = false
 	high_scores_display.show_high_scores(current_level_name)

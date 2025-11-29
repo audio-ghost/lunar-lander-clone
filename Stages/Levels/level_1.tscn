@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddv1t33jyym7o"]
+[gd_scene load_steps=8 format=3 uid="uid://ddv1t33jyym7o"]
 
 [ext_resource type="Script" uid="uid://ck68te1boodmn" path="res://Stages/world.gd" id="1_44fcg"]
 [ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_s3nl4"]
 [ext_resource type="Resource" uid="uid://cbl4iksdn115k" path="res://Entities/Player/Data/stats.tres" id="3_gm0pk"]
 [ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="4_j52rq"]
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_e5c3u"]
+[ext_resource type="AudioStream" uid="uid://0e5bjx3dd4hd" path="res://Stages/Levels/Sounds/Room(Loop) - piano - drone.mp3" id="6_srnku"]
+[ext_resource type="Texture2D" uid="uid://bhij6tdofn8g7" path="res://Stages/Levels/Art/Blue_Nebula_02-1024x1024.png" id="7_gwcit"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_44fcg")
@@ -19,10 +21,11 @@ collision_mask = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="GroundBody"]
 position = Vector2(-3, 44)
-color = Color(0.84847105, 0.506513, 0.83309186, 1)
+color = Color(0.16780081, 0.035603754, 0.16499797, 1)
 polygon = PackedVector2Array(-21, 64, 6, 50, 105, 50, 115, 55, 122, 70, 125, 86, 128, 101, 121, 116, 112, 125, 102, 137, 98, 168, 104, 187, 116, 196, 234, 196, 247, 189, 258, 182, 262, 170, 255, 140, 256, 128, 265, 115, 281, 113, 403, 113, 419, 113, 433, 115, 445, 121, 450, 136, 445, 175, 444, 220, 447, 237, 458, 246, 474, 250, 580, 250, 594, 239, 604, 226, 606, 211, 602, 194, 597, 150, 604, 78, 610, 63, 619, 54, 632, 47, 673, 47, 673, 369, -49, 368, -49, 64)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundBody"]
+visible = false
 position = Vector2(-3, 44)
 polygon = PackedVector2Array(-21, 64, 6, 50, 105, 50, 115, 55, 122, 70, 125, 86, 128, 101, 121, 116, 112, 125, 102, 137, 98, 168, 104, 187, 116, 196, 234, 196, 247, 189, 258, 182, 262, 170, 255, 140, 256, 128, 265, 115, 281, 113, 403, 113, 419, 113, 433, 115, 445, 121, 450, 136, 445, 175, 444, 220, 447, 237, 458, 246, 474, 250, 580, 250, 594, 239, 604, 226, 606, 211, 602, 194, 597, 150, 604, 78, 610, 63, 619, 54, 632, 47, 673, 47, 673, 369, -49, 368, -49, 64)
 
@@ -49,3 +52,19 @@ first_score_value = 150
 score_value = 75
 
 [node name="HUD" parent="." instance=ExtResource("5_e5c3u")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_srnku")
+autoplay = true
+bus = &"Music"
+parameters/looping = false
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -169.0
+offset_top = -155.0
+offset_right = 855.0
+offset_bottom = 869.0
+pivot_offset = Vector2(512, 512)
+texture = ExtResource("7_gwcit")
+stretch_mode = 4

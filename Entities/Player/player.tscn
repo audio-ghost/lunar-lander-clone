@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddn3wdmffxl2k"]
+[gd_scene load_steps=14 format=3 uid="uid://ddn3wdmffxl2k"]
 
 [ext_resource type="Texture2D" uid="uid://bopacpr63wr2v" path="res://Entities/Player/Art/LunarLander.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dpy2xjaw7gc36" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://curavkghnt5l3" path="res://Entities/Player/Art/RocketBooster.png" id="2_onrkg"]
+[ext_resource type="AudioStream" uid="uid://b0y7rh2vuddls" path="res://Entities/Player/Sound/big distant thump 1.wav" id="4_tekja"]
+[ext_resource type="AudioStream" uid="uid://bfhbau64rjx52" path="res://Entities/Player/Sound/air duster 2.wav" id="5_5c2io"]
+[ext_resource type="AudioStream" uid="uid://bjp2sk2vjrf60" path="res://Entities/Player/Sound/sci fi bell 1.wav" id="6_4wf4l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -97,3 +100,16 @@ collision_mask = 4
 position = Vector2(6, 6)
 target_position = Vector2(0, 8)
 collision_mask = 4
+
+[node name="CrashAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tekja")
+volume_db = 12.193
+bus = &"SFX"
+
+[node name="ThrustersAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5c2io")
+volume_db = -17.214
+bus = &"SFX"
+
+[node name="LandingAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4wf4l")
