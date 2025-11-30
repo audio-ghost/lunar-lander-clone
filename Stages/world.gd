@@ -4,11 +4,13 @@ var end_screen = preload("res://Stages/Menus/GameEndScreen/game_end_screen.tscn"
 
 @onready var player: Player = $Player
 @onready var background_texture_rect: TextureRect = $BackgroundTextureRect
+@onready var pause_menu: PauseMenu = $PauseMenu
 
 func _ready():
 	player.stats.reset()
 	player.player_game_over.connect(_on_player_game_over)
 	player.player_level_complete.connect(_on_player_level_complete)
+	player.pause_game.connect(_on_player_pause)
 
 func _process(delta: float) -> void:
 	background_texture_rect.rotation += 0.01 * delta
@@ -24,3 +26,6 @@ func _on_player_game_over(score):
 
 func _on_player_level_complete(score):
 	show_game_end_screen(true, score)
+
+func _on_player_pause():
+	pause_menu.open()

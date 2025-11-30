@@ -43,6 +43,7 @@ var last_successful_landing_pad : LandingPad = null
 
 signal player_game_over
 signal player_level_complete
+signal pause_game
 
 func _ready() -> void:
 	ship_collider_area.body_entered.connect(_on_ship_collider_body_entered)
@@ -221,3 +222,7 @@ func handle_game_over():
 func handle_level_complete():
 	disable_player_input()
 	emit_signal("player_level_complete", stats.score)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		emit_signal("pause_game")

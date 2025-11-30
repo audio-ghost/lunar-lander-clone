@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlkt2ay1061ht"]
+[gd_scene load_steps=9 format=3 uid="uid://dlkt2ay1061ht"]
 
 [ext_resource type="Script" uid="uid://ck68te1boodmn" path="res://Stages/world.gd" id="1_c7d60"]
 [ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_yl0jo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_c7d60"]
 [ext_resource type="AudioStream" uid="uid://bji2yhiom3dqm" path="res://Stages/Levels/Sounds/Alone(loop) - melancholic - slow.mp3" id="6_tf67v"]
 [ext_resource type="Texture2D" uid="uid://jdxjc7xmjfe3" path="res://Stages/Levels/Art/Purple_Nebula_01-1024x1024.png" id="7_462yr"]
+[ext_resource type="PackedScene" uid="uid://0ac3g2o0u2xh" path="res://Stages/Menus/PauseMenu/pause_menu.tscn" id="8_462yr"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_c7d60")
@@ -51,3 +52,5 @@ offset_bottom = 872.0
 pivot_offset = Vector2(512, 512)
 texture = ExtResource("7_462yr")
 stretch_mode = 4
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_462yr")]

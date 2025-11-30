@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpo4kewyc6ldf"]
+[gd_scene load_steps=9 format=3 uid="uid://dpo4kewyc6ldf"]
 
 [ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_s3nl4"]
 [ext_resource type="Script" uid="uid://ck68te1boodmn" path="res://Stages/world.gd" id="1_ymhyp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_e5c3u"]
 [ext_resource type="AudioStream" uid="uid://bji2yhiom3dqm" path="res://Stages/Levels/Sounds/Alone(loop) - melancholic - slow.mp3" id="6_vynsy"]
 [ext_resource type="Texture2D" uid="uid://jdxjc7xmjfe3" path="res://Stages/Levels/Art/Purple_Nebula_01-1024x1024.png" id="7_n1tu5"]
+[ext_resource type="PackedScene" uid="uid://0ac3g2o0u2xh" path="res://Stages/Menus/PauseMenu/pause_menu.tscn" id="8_k2k5j"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_ymhyp")
@@ -21,7 +22,7 @@ collision_mask = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="GroundBody"]
 position = Vector2(-3, 44)
-color = Color(0.017844474, 0.107491545, 0.08148936, 1)
+color = Color(0.03998482, 0.16133463, 0.12970576, 1)
 polygon = PackedVector2Array(-21, 64, 6, 50, 79, 50, 93, 66, 76, 83, 42, 92, 26, 137, 35, 178, 60, 205, 82, 237, 106, 249, 159, 255, 204, 248, 231, 257, 246, 288, 282, 288, 314, 252, 281, 221, 313, 196, 349, 199, 360, 222, 368, 254, 398, 254, 401, 224, 412, 188, 381, 156, 316, 159, 256, 179, 191, 205, 131, 194, 102, 152, 131, 111, 175, 90, 206, 62, 243, 74, 248, 116, 328, 116, 341, 67, 369, 46, 424, 30, 461, 62, 478, 109, 474, 171, 438, 213, 446, 256, 474, 284, 552, 284, 575, 249, 555, 212, 574, 159, 542, 125, 562, 69, 608, 42, 673, 47, 673, 369, -49, 368, -49, 64)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundBody"]
@@ -58,6 +59,7 @@ score_value = 250
 [node name="HUD" parent="." instance=ExtResource("5_e5c3u")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_vynsy")
 autoplay = true
 bus = &"Music"
@@ -72,3 +74,5 @@ offset_bottom = 872.0
 pivot_offset = Vector2(512, 512)
 texture = ExtResource("7_n1tu5")
 stretch_mode = 4
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_k2k5j")]

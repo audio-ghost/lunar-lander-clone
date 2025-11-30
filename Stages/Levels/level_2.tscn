@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://co6d4oan2vqpi"]
+[gd_scene load_steps=9 format=3 uid="uid://co6d4oan2vqpi"]
 
 [ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_gynn7"]
 [ext_resource type="Script" uid="uid://ck68te1boodmn" path="res://Stages/world.gd" id="1_ntqj3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_vp6xm"]
 [ext_resource type="AudioStream" uid="uid://dsy74xkqvdgac" path="res://Stages/Levels/Sounds/Transfer(loop) - drone - spaces.mp3" id="6_888nl"]
 [ext_resource type="Texture2D" uid="uid://c3xdscvgesqcx" path="res://Stages/Levels/Art/Green_Nebula_06-1024x1024.png" id="7_q68wu"]
+[ext_resource type="PackedScene" uid="uid://0ac3g2o0u2xh" path="res://Stages/Menus/PauseMenu/pause_menu.tscn" id="8_gbyli"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_ntqj3")
@@ -21,7 +22,7 @@ collision_mask = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="GroundBody"]
 position = Vector2(-3, 44)
-color = Color(0.09792095, 0.074749984, 0.007164816, 1)
+color = Color(0.19732526, 0.15853488, 0.026062068, 1)
 polygon = PackedVector2Array(64, 278, 64, 179, 133, 179, 133, 53, 194, 53, 194, 191, 267, 191, 267, 134, 319, 134, 319, 254, 398, 254, 398, 63, 465, 63, 465, 293, 545, 293, 545, 148, 602, 148, 602, 283, 673, 283, 673, 369, -49, 368, -49, 278)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundBody"]
@@ -80,3 +81,5 @@ offset_bottom = 872.0
 pivot_offset = Vector2(512, 512)
 texture = ExtResource("7_q68wu")
 stretch_mode = 4
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_gbyli")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddv1t33jyym7o"]
+[gd_scene load_steps=9 format=3 uid="uid://ddv1t33jyym7o"]
 
 [ext_resource type="Script" uid="uid://ck68te1boodmn" path="res://Stages/world.gd" id="1_44fcg"]
 [ext_resource type="PackedScene" uid="uid://ddn3wdmffxl2k" path="res://Entities/Player/player.tscn" id="1_s3nl4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_e5c3u"]
 [ext_resource type="AudioStream" uid="uid://0e5bjx3dd4hd" path="res://Stages/Levels/Sounds/Room(Loop) - piano - drone.mp3" id="6_srnku"]
 [ext_resource type="Texture2D" uid="uid://bhij6tdofn8g7" path="res://Stages/Levels/Art/Blue_Nebula_02-1024x1024.png" id="7_gwcit"]
+[ext_resource type="PackedScene" uid="uid://0ac3g2o0u2xh" path="res://Stages/Menus/PauseMenu/pause_menu.tscn" id="8_agnyp"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_44fcg")
@@ -54,6 +55,7 @@ score_value = 75
 [node name="HUD" parent="." instance=ExtResource("5_e5c3u")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_srnku")
 autoplay = true
 bus = &"Music"
@@ -68,3 +70,5 @@ offset_bottom = 869.0
 pivot_offset = Vector2(512, 512)
 texture = ExtResource("7_gwcit")
 stretch_mode = 4
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_agnyp")]
