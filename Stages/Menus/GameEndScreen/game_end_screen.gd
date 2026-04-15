@@ -5,7 +5,6 @@ extends CanvasLayer
 @onready var restart_button: Button = $VBoxContainer/HBoxContainer/RestartButton
 @onready var level_select_button: Button = $VBoxContainer/HBoxContainer/LevelSelectButton
 @onready var quit_button: Button = $VBoxContainer/HBoxContainer/QuitButton
-@onready var high_scores_label: Label = $VBoxContainer/HighScoresLabel
 @onready var name_entry_container: BoxContainer = $VBoxContainer/NameEntryContainer
 @onready var name_entry_line_edit: LineEdit = $VBoxContainer/NameEntryContainer/NameEntryLineEdit
 @onready var name_entry_button: Button = $VBoxContainer/NameEntryContainer/NameEntryButton
