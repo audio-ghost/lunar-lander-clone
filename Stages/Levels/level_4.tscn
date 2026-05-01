@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://cbl4iksdn115k" path="res://Entities/Player/Data/stats.tres" id="2_8ery4"]
 [ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="3_vhxmo"]
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="4_igytm"]
-[ext_resource type="AudioStream" uid="uid://ckqvpsiua2au2" path="res://Stages/Levels/Sounds/Echo(loop) - hollow - scary - anxiety.mp3" id="6_p770c"]
-[ext_resource type="Texture2D" uid="uid://mmfewdd0qb7e" path="res://Stages/Levels/Art/Blue_Nebula_04-1024x1024.png" id="7_4lxqw"]
+[ext_resource type="AudioStream" uid="uid://jkjfhemx435x" path="res://Stages/Levels/Sounds/Echo(loop) - hollow - scary - anxiety.mp3" id="6_p770c"]
+[ext_resource type="Texture2D" uid="uid://c44kenrbae6y" path="res://Stages/Levels/Art/Blue_Nebula_04-1024x1024.png" id="7_4lxqw"]
 [ext_resource type="PackedScene" uid="uid://0ac3g2o0u2xh" path="res://Stages/Menus/PauseMenu/pause_menu.tscn" id="8_8jguw"]
 
 [node name="Level4" type="Node2D"]

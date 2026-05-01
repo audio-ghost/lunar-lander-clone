@@ -10,9 +10,9 @@ var is_showing_message: bool = false
 func _ready() -> void:
 	reset_message()
 
-func set_fuel(amount: float, max_fuel: float):
+func set_fuel(amount: float, max_fuel: float) -> void:
 	fuel_bar.max_value = max_fuel
-	var tween = get_tree().create_tween()
+	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(fuel_bar, "value", amount, 0.2)
 	
 	if amount < max_fuel * 0.2:
@@ -20,36 +20,36 @@ func set_fuel(amount: float, max_fuel: float):
 	else:
 		fuel_bar.modulate = Color.WHITE
 
-func set_score(amount: int):
-	var formatted_amount = str(amount)
+func set_score(amount: int) -> void:
+	var formatted_amount: String = str(amount)
 	while formatted_amount.length() < 5:
 		formatted_amount = "0" + formatted_amount
 	score_label.text = formatted_amount
 
-func display_message(message: String, color: Color):
+func display_message(message: String, color: Color) -> void:
 	message_queue.append({"text": message, "color": color})
 	if not is_showing_message:
 		_show_next_message()
 	
-func _show_next_message():
+func _show_next_message()-> void:
 	if message_queue.is_empty():
 		is_showing_message = false
 		return
 	
 	is_showing_message = true
 	
-	var message = message_queue.pop_front()
+	var message: Dictionary = message_queue.pop_front()
 	display_text.text = message["text"]
 	display_text.modulate = message["color"]
 	display_text.modulate.a = 0
 	display_text.show()
 	
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(display_text, "modulate:a", 1.0, 0.1)
 	tween.tween_interval(1)
 	tween.tween_property(display_text, "modulate:a", 0.0, 0.5)
 	tween.finished.connect(reset_message)
 
-func reset_message():
+func reset_message() -> void:
 	display_text.hide()
 	_show_next_message()

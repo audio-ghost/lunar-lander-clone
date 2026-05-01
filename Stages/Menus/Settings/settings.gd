@@ -14,17 +14,17 @@ func _ready() -> void:
 	sfx_slider.connect("value_changed", Callable(self, "_on_sfx_changed"))
 	back_button.pressed.connect(_on_back_button_pressed)
 
-func _on_music_changed(value):
-	var i = AudioServer.get_bus_index("Music")
+func _on_music_changed(value: float) -> void:
+	var i: int = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(i, value)
 	SettingsManager.save_settings()
 	music_audio_stream_player.play()
 
-func _on_sfx_changed(value):
-	var i = AudioServer.get_bus_index("SFX")
+func _on_sfx_changed(value: float) -> void:
+	var i: int = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_db(i, value)
 	SettingsManager.save_settings()
 	sfx_audio_stream_player.play()
 
-func _on_back_button_pressed():
+func _on_back_button_pressed() -> void:
 	SceneLoader.load_scene("res://Stages/Menus/TitleScreen/title_screen.tscn")

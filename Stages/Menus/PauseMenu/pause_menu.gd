@@ -11,22 +11,22 @@ func _ready() -> void:
 	level_select_button.pressed.connect(_on_level_select_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 
-func open():
+func open() -> void:
 	visible = true
 	get_tree().paused = true
 	resume_button.grab_focus()
 
-func close():
+func close() -> void:
 	get_tree().paused = false
 	visible = false
 
-func _on_resume_button_pressed():
+func _on_resume_button_pressed() -> void:
 	close()
 
-func _on_level_select_button_pressed():
+func _on_level_select_button_pressed() -> void:
 	get_tree().paused = false
 	SceneLoader.load_scene("res://Stages/Menus/LevelSelect/level_select.tscn")
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed() -> void:
 	get_tree().paused = false
 	SceneLoader.load_scene("res://Stages/Menus/TitleScreen/title_screen.tscn")

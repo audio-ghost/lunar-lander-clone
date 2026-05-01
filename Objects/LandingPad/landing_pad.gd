@@ -1,15 +1,15 @@
 class_name LandingPad extends StaticBody2D
 
 @export var pad_width: float = 24.0
-@export var first_score_value := 100
-@export var score_value := 50
-@export var was_landed := false
+@export var first_score_value: int = 100
+@export var score_value: int = 50
+@export var was_landed: bool = false
 
 @onready var scoring_label: Label = $ScoringLabel
 @onready var polygon_2d: Polygon2D = $Polygon2D
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 
-var can_score = true
+var can_score: bool = true
 
 signal landed(pad: LandingPad)
 
@@ -22,9 +22,9 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	LandingPadManager.unregister_pad(self)
 
-func update_shape():
-	var half = pad_width / 2.0
-	var points = [
+func update_shape() -> void:
+	var half: float = pad_width / 2.0
+	var points: Array[Vector2] = [
 		Vector2(-half, -4),
 		Vector2(half, -4),
 		Vector2(half, 4),

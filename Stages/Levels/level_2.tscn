@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://cbl4iksdn115k" path="res://Entities/Player/Data/stats.tres" id="3_hedku"]
 [ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="4_b3n3k"]
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_vp6xm"]
-[ext_resource type="AudioStream" uid="uid://dsy74xkqvdgac" path="res://Stages/Levels/Sounds/Transfer(loop) - drone - spaces.mp3" id="6_888nl"]
-[ext_resource type="Texture2D" uid="uid://c3xdscvgesqcx" path="res://Stages/Levels/Art/Green_Nebula_06-1024x1024.png" id="7_q68wu"]
+[ext_resource type="AudioStream" uid="uid://bpenk5ye0nray" path="res://Stages/Levels/Sounds/Transfer(loop) - drone - spaces.mp3" id="6_888nl"]
+[ext_resource type="Texture2D" uid="uid://chmuoeggsa2lw" path="res://Stages/Levels/Art/Green_Nebula_06-1024x1024.png" id="7_q68wu"]
 [ext_resource type="PackedScene" uid="uid://0ac3g2o0u2xh" path="res://Stages/Menus/PauseMenu/pause_menu.tscn" id="8_gbyli"]
 
 [node name="Level2" type="Node2D"]

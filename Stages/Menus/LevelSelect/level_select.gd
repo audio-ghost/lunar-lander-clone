@@ -4,7 +4,7 @@ extends Control
 @onready var back_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/BackButton
 @onready var high_scores_display: HighScoresDisplay = $MarginContainer/VBoxContainer/HighScoresDisplay
 
-var level_data = [
+var level_data: Array = [
 	{
 		"name": "Level 1",
 		"path": "res://Stages/Levels/level_1.tscn",
@@ -38,23 +38,23 @@ func _ready() -> void:
 	await get_tree().process_frame
 	level_grid.get_children()[0].grab_focus()
 
-func _build_level_buttons():
-	var level_button_scene = load("res://Stages/Menus/LevelSelect/Data/level_button.tscn")
+func _build_level_buttons() -> void:
+	var level_button_scene: Resource = load("res://Stages/Menus/LevelSelect/Data/level_button.tscn")
 	
-	for lvl in level_data:
-		var btn = level_button_scene.instantiate()
+	for lvl: Dictionary in level_data:
+		var btn: LevelButton = level_button_scene.instantiate()
 		btn.level_name = lvl["name"]
 		btn.level_path = lvl["path"]
 		
-		btn.pressed.connect(func():
-			SceneLoader.load_scene(lvl["path"])
+		btn.pressed.connect(func() -> void:
+			SceneLoader.load_scene(str(lvl["path"]))
 		)
 		
-		btn.focus_entered.connect(func():
-			high_scores_display.show_high_scores(lvl["filename"])
+		btn.focus_entered.connect(func() -> void:
+			high_scores_display.show_high_scores(str(lvl["filename"]))
 		)
 		
 		level_grid.add_child(btn)
 
-func _on_back_button_pressed():
+func _on_back_button_pressed() -> void:
 	SceneLoader.load_scene("res://Stages/Menus/TitleScreen/title_screen.tscn")

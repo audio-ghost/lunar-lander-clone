@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://cbl4iksdn115k" path="res://Entities/Player/Data/stats.tres" id="3_gm0pk"]
 [ext_resource type="PackedScene" uid="uid://b2ef1uhb4s70o" path="res://Objects/LandingPad/landing_pad.tscn" id="4_j52rq"]
 [ext_resource type="PackedScene" uid="uid://c442u2xqfceb3" path="res://Stages/UI/hud.tscn" id="5_e5c3u"]
-[ext_resource type="AudioStream" uid="uid://bji2yhiom3dqm" path="res://Stages/Levels/Sounds/Alone(loop) - melancholic - slow.mp3" id="6_vynsy"]
-[ext_resource type="Texture2D" uid="uid://jdxjc7xmjfe3" path="res://Stages/Levels/Art/Purple_Nebula_01-1024x1024.png" id="7_n1tu5"]
+[ext_resource type="AudioStream" uid="uid://dwvtumx0kf4v7" path="res://Stages/Levels/Sounds/Alone(loop) - melancholic - slow.mp3" id="6_vynsy"]
+[ext_resource type="Texture2D" uid="uid://w0xqgdoooogh" path="res://Stages/Levels/Art/Purple_Nebula_01-1024x1024.png" id="7_n1tu5"]
 [ext_resource type="PackedScene" uid="uid://0ac3g2o0u2xh" path="res://Stages/Menus/PauseMenu/pause_menu.tscn" id="8_k2k5j"]
 
 [node name="Level3" type="Node2D"]

@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://6a1vn383hxip"]
+[gd_scene format=3 uid="uid://6a1vn383hxip"]
 
 [ext_resource type="Script" uid="uid://kwr4vow3d66h" path="res://Stages/Menus/GameEndScreen/game_end_screen.gd" id="1_1m15n"]
 [ext_resource type="PackedScene" uid="uid://com2edqyokjag" path="res://Stages/Menus/HighScoresDisplay/high_scores_display.tscn" id="2_lajtg"]
 
-[node name="GameEndScreen" type="CanvasLayer"]
+[node name="GameEndScreen" type="CanvasLayer" unique_id=938162578]
 process_mode = 3
 script = ExtResource("1_1m15n")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=405609481]
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 0.65882355)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=327638496]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -25,45 +25,45 @@ offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1849320398]
 layout_mode = 2
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="VBoxContainer" unique_id=1806753364]
 layout_mode = 2
 text = "Score"
 horizontal_alignment = 1
 
-[node name="HighScoresDisplay" parent="VBoxContainer" instance=ExtResource("2_lajtg")]
+[node name="HighScoresDisplay" parent="VBoxContainer" unique_id=829181808 instance=ExtResource("2_lajtg")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1269750786]
 layout_mode = 2
 
-[node name="RestartButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="RestartButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=589503584]
 layout_mode = 2
 text = "Restart Level"
 
-[node name="LevelSelectButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2075865371]
 layout_mode = 2
 text = "Level Select"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=459501898]
 layout_mode = 2
 text = "Quit to Main Menu"
 
-[node name="NameEntryContainer" type="BoxContainer" parent="VBoxContainer"]
+[node name="NameEntryContainer" type="BoxContainer" parent="VBoxContainer" unique_id=2030150005]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/NameEntryContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/NameEntryContainer" unique_id=1979820460]
 layout_mode = 2
 text = "New High Score!"
 
-[node name="NameEntryLineEdit" type="LineEdit" parent="VBoxContainer/NameEntryContainer"]
+[node name="NameEntryLineEdit" type="LineEdit" parent="VBoxContainer/NameEntryContainer" unique_id=598290228]
 layout_mode = 2
 
-[node name="NameEntryButton" type="Button" parent="VBoxContainer/NameEntryContainer"]
+[node name="NameEntryButton" type="Button" parent="VBoxContainer/NameEntryContainer" unique_id=90197950]
 layout_mode = 2
 text = "Submit"

@@ -10,11 +10,11 @@ extends CanvasLayer
 @onready var name_entry_button: Button = $VBoxContainer/NameEntryContainer/NameEntryButton
 @onready var high_scores_display: HighScoresDisplay = $VBoxContainer/HighScoresDisplay
 
-var current_level_name := ""
-var is_complete := false
-var pending_score := 0
+var current_level_name: String = ""
+var is_complete: bool = false
+var pending_score: int = 0
 
-func setup(level_complete: bool, score: int, level_name: String):
+func setup(level_complete: bool, score: int, level_name: String) -> void:
 	current_level_name = level_name
 	is_complete = level_complete
 	
@@ -28,16 +28,16 @@ func setup(level_complete: bool, score: int, level_name: String):
 		high_scores_display.show_high_scores(current_level_name)
 		restart_button.grab_focus()
 
-func ask_for_name(score: int):
+func ask_for_name(score: int) -> void:
 	name_entry_container.visible = true
 	name_entry_line_edit.text = ""
 	name_entry_line_edit.grab_focus()
 	pending_score = score
 
-func _on_name_submit_pressed():
-	var player_name = name_entry_line_edit.text.strip_edges()
+func _on_name_submit_pressed() -> void:
+	var player_name: String = name_entry_line_edit.text.strip_edges()
 	if player_name == "":
-		player_name == "AAA"
+		player_name = "AAA"
 	
 	HighScoreManager.add_score(current_level_name, player_name, pending_score)
 	
@@ -46,20 +46,20 @@ func _on_name_submit_pressed():
 	restart_button.grab_focus()
 
 
-func _ready():
+func ready() -> void:
 	restart_button.pressed.connect(_on_restart_pressed)
 	level_select_button.pressed.connect(_on_level_select_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	name_entry_button.pressed.connect(_on_name_submit_pressed)
 
-func _on_restart_pressed():
+func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
-func _on_level_select_button_pressed():
+func _on_level_select_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Stages/Menus/LevelSelect/level_select.tscn")
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Stages/Menus/TitleScreen/title_screen.tscn")

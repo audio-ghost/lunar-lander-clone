@@ -26,13 +26,20 @@ SceneLoader="*res://Utilities/SceneLoader.gd"
 HighScoreManager="*res://Utilities/HighScoreManager.gd"
 SettingsManager="*res://Utilities/SettingsManager.gd"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=1
+
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=2
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=2560
+window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
 
 [editor]

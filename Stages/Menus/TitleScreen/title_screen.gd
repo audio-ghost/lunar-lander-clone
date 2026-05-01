@@ -11,11 +11,11 @@ func _ready() -> void:
 	test_level_button.pressed.connect(_on_test_level_pressed)
 	level_select_button.grab_focus()
 
-func _on_test_level_pressed():
+func _on_test_level_pressed() -> void:
 	SceneLoader.load_scene("res://Stages/world.tscn")
 
-func _on_level_select_pressed():
+func _on_level_select_pressed() -> void:
 	SceneLoader.load_scene("res://Stages/Menus/LevelSelect/level_select.tscn")
 
-func _on_settings_pressed():
+func _on_settings_pressed() -> void:
 	SceneLoader.load_scene("res://Stages/Menus/Settings/settings.tscn")

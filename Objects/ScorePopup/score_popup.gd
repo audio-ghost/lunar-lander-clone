@@ -1,4 +1,4 @@
-extends Node2D
+class_name ScorePopup extends Node2D
 
 @onready var label: Label = $Label
 
@@ -10,7 +10,7 @@ func show_points(amount: int) -> void:
 	run_animation()
 
 func run_animation() -> void:
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(self, "position:y", position.y - 40, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(self, "modulate:a", 0.0, 1.0)
 	
